@@ -3,5 +3,7 @@ if status is-interactive
 end
 
 if test -n "$DESKTOP_SESSION"
-    set -x (gnome-keyring-daemon --start | string split "=")
+    set -gx MOZ_ENABLE_WAYLAND 1
+    set -gx QT_QPA_PLATFORM wayland
+    set -gx SDL_VIDEODRIVER wayland
 end
