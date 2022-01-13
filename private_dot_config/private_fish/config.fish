@@ -7,3 +7,6 @@ if test -n "$DESKTOP_SESSION"
     set -gx QT_QPA_PLATFORM wayland
     set -gx SDL_VIDEODRIVER wayland
 end
+
+set -g theme_nerd_fonts yes
+set -g theme_color_scheme gruvbox
