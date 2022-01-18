@@ -64,11 +64,11 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- Gitsigns
 require("gitsigns").setup {
     signs = {
-        add = { hl = "GitGutterAdd", text = "+" },
-        change = { hl = "GitGutterChange", text = "~" },
-        delete = { hl = "GitGutterDelete", text = "_" },
-        topdelete = { hl = "GitGutterDelete", text = "‾" },
-        changedelete = { hl = "GitGutterChange", text = "~" },
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
     },
 }
 
@@ -190,9 +190,8 @@ require("nvim-treesitter.configs").setup {
 }
 
 -- LSP settings
-local nvim_lsp = require "lspconfig"
+local lspconfig = require "lspconfig"
 local on_attach = function(_, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     local opts = { noremap = true, silent = true }
     vim.api.nvim_buf_set_keymap( bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -225,7 +224,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-nvim_lsp.texlab.setup {
+lspconfig.texlab.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -238,7 +237,7 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-nvim_lsp.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
     cmd = { "/usr/bin/lua-language-server" },
     on_attach = on_attach,
     capabilities = capabilities,
@@ -264,7 +263,7 @@ nvim_lsp.sumneko_lua.setup {
 -- Enable the following language servers
 local servers = { "clangd", "rust_analyzer", "pyright" }
 for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
+    lspconfig[lsp].setup {
         on_attach = on_attach,
         capabilities = capabilities,
     }
