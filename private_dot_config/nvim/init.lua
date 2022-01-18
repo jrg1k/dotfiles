@@ -22,7 +22,7 @@ require("packer").startup(function()
     use "tpope/vim-rhubarb"
 
     -- handy tools
-    use "tpope/vim-commentary"
+    use "numToStr/Comment.nvim"
     use "psf/black"
     use "ludovicchabant/vim-gutentags"
     use "lukas-reineke/indent-blankline.nvim"
@@ -71,6 +71,9 @@ require("gitsigns").setup {
         changedelete = { text = "~" },
     },
 }
+
+-- Comment.nvim
+require('Comment').setup()
 
 vim.wo.number = true
 vim.o.mouse = "a"
