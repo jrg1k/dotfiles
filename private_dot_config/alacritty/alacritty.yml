@@ -48,10 +48,10 @@ colors:
   # indexed_colors: []
 font:
   normal:
-    family: Fira Code
+    family: Source Code Pro
     style: Regular
   bold:
-    family: Fira Code
+    family: Source Code Pro
     style: Bold
   italic:
     family: Source Code Pro 
@@ -59,7 +59,7 @@ font:
   bold_italic:
     family: Source Code Pro 
     style: Bold Italic
-  size: 11
+  size: 12
 
 key_bindings:
   - { key: N,   mods: Control, action: SpawnNewInstance }
