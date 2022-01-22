@@ -31,7 +31,7 @@ require("packer").startup(function()
     use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
     -- eyecandy
-    use("morhetz/gruvbox")
+    use("eddyekofo94/gruvbox-flat.nvim")
     use("nvim-lualine/lualine.nvim")
 
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -94,12 +94,9 @@ vim.wo.signcolumn = "yes"
 vim.o.colorcolumn = "89"
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.o.backup = false
-vim.o.writebackup = false
-vim.o.swapfile = false
 vim.o.undofile = true
 vim.o.updatetime = 250
-vim.o.completeopt = "menu,menuone,noselect"
+vim.o.completeopt = "menuone,noselect"
 vim.api.nvim_set_keymap("i", "<C-c>", "<ESC>", {})
 
 -- search
@@ -110,12 +107,11 @@ vim.o.smartcase = true
 -- theme
 vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.g.gruvbox_italic = 1
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme gruvbox-flat]])
 require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = "gruvbox",
+        theme = "gruvbox-flat",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {},
@@ -171,7 +167,6 @@ vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { 
 vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", { noremap = true, silent = true })
 
 require("nvim-treesitter.configs").setup({
-    ensure_installed = "maintained",
     highlight = { enable = true },
     incremental_selection = {
         enable = true,
