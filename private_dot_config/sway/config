@@ -260,6 +260,7 @@ exec_always {
 }
 
 exec xsettingsd
+exec "/usr/libexec/polkit-gnome-authentication-agent-1"
 
 #
 # Status Bar:
