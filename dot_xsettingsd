@@ -1,4 +1,4 @@
-Net/ThemeName "Adwaita-dark"
-Net/IconThemeName "Adwaita"
 Gtk/CursorThemeName "Adwaita"
-Gtk/FontName "Cantarell 12"
+Gtk/FontName "Fira Sans 12"
+Net/IconThemeName "Adwaita"
+Net/ThemeName "Adwaita-dark"
