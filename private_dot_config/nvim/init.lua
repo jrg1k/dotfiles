@@ -31,7 +31,7 @@ require("packer").startup(function()
     use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
     -- eyecandy
-    use("eddyekofo94/gruvbox-flat.nvim")
+    use("ellisonleao/gruvbox.nvim")
     use("nvim-lualine/lualine.nvim")
 
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -107,11 +107,11 @@ vim.o.smartcase = true
 -- theme
 vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.cmd([[colorscheme gruvbox-flat]])
+vim.cmd([[colorscheme gruvbox]])
 require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = "gruvbox-flat",
+        theme = "gruvbox",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {},
@@ -277,7 +277,7 @@ lspconfig.sumneko_lua.setup({
 })
 
 -- Enable the following language servers
-local servers = { "clangd", "rust_analyzer", "pyright" }
+local servers = { "asm-lsp", "clangd", "rust_analyzer", "pyright" }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup({
         on_attach = on_attach,
