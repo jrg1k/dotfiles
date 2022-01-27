@@ -1,0 +1,7 @@
+# .bash_profile
+
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
+# Get the aliases and functions
+[ -f $HOME/.bashrc ] && . $HOME/.bashrc
