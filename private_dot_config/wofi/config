@@ -7,5 +7,5 @@ insensitive=true
 key_expand=Tab
 line_wrap=word_char
 mode=drun
-term=kitty
+term=alacritty
 width=760
