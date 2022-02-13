@@ -245,8 +245,13 @@ lspconfig.texlab.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
-        texlab = { build = { onSave = true } },
-        latexindent = { modifyLineBreaks = true },
+        texlab = {
+            build = {
+                args = { "-xelatex", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                onSave = true
+            },
+            latexindent = { modifyLineBreaks = true },
+        },
     },
 })
 
