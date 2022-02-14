@@ -111,7 +111,7 @@ input "type:pointer" {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-    bindsym $mod+Alt+l exec "swaylock -f -C 000000"
+    bindsym $mod+Alt+l exec "swaylock -f -c 000000"
 
     bindsym Ctrl+Alt+Delete exec swaynag -t warning -m "session" \
         -b 'exit sway' 'swaymsg exit' \
