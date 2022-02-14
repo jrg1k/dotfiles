@@ -51,7 +51,7 @@ include output_config
 exec swayidle -w \
          timeout 900 'swaylock -f -c 000000' \
          timeout 1000 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on";sleep 2;swaymsg "output * dpms on"' \
+         resume 'swaymsg "output * dpms on";swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -111,11 +111,14 @@ input "type:pointer" {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+    bindsym $mod+Alt+l exec "swaylock -f -C 000000"
+
     bindsym Ctrl+Alt+Delete exec swaynag -t warning -m "session" \
         -b 'exit sway' 'swaymsg exit' \
         -b 'sleep' 'systemctl suspend' \
         -b 'reboot' 'reboot' \
         -b 'shutdown' 'poweroff' \
+        -b 'lock' 'swaylock -f -C 000000' \
 #
 # Moving around:
 #
