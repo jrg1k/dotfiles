@@ -265,6 +265,8 @@ exec_always {
 
 exec xsettingsd
 exec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+exec "eval $(gnome-keyring-daemon --start)"
+exec "export SSH_AUTH_SOCK"
 
 #
 # Status Bar:
