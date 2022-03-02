@@ -281,13 +281,6 @@ lspconfig.sumneko_lua.setup({
     },
 })
 
-lspconfig.asm_lsp.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = { "asm-lsp" },
-    filetypes = { "asm", "vmasm", "s", "S"}
-})
-
 -- Enable the following language servers
 local servers = { "clangd", "rust_analyzer", "pyright" }
 for _, lsp in ipairs(servers) do
