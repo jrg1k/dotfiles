@@ -13,7 +13,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd("packadd packer.nvim")
 end
 
-require("packer").startup(function()
+require("packer").startup(function(use)
     -- plugin manager
     use("wbthomason/packer.nvim")
 
