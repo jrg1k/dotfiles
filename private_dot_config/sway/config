@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -23,7 +23,7 @@ set $menu wofi
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg "#282828" solid_color
+output * bg "#000000" solid_color
 #
 # Example configuration:
 #
@@ -250,9 +250,9 @@ bindsym $mod+r mode "resize"
 focus_follows_mouse no
 default_border pixel 2
 
-client.focused #83a598 #83a598 #83a598 #83a598 #83a598
-client.unfocused #928374 #928374 #928374 #928374 #928374 
-client.focused_inactive #928374 #928374 #928374 #928374 #928374
+client.focused #266269 #266269 #266269 #266269 #266269
+client.unfocused #0e1013 #0e1013 #0e1013 #0e1013 #0e1013
+client.focused_inactive #0e1013 #0e1013 #0e1013 #0e1013 #0e1013
 
 set $gnome-schema org.gnome.desktop.interface
 

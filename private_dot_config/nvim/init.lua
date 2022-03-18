@@ -31,7 +31,7 @@ require("packer").startup(function(use)
     use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
     -- eyecandy
-    use("ellisonleao/gruvbox.nvim")
+    use ('navarasu/onedark.nvim')
     use("nvim-lualine/lualine.nvim")
 
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -106,36 +106,18 @@ vim.o.smartcase = true
 
 -- theme
 vim.o.background = "dark"
-vim.o.termguicolors = true
-vim.cmd([[colorscheme gruvbox]])
-require("lualine").setup({
-    options = {
-        icons_enabled = true,
-        theme = "gruvbox",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
-        disabled_filetypes = {},
-        always_divide_middle = true,
-    },
-    sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = { "filename" },
-        lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
-    },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
-    },
-    tabline = {},
-    extensions = {},
-})
+require('onedark').setup {
+    style = 'darker'
+}
+require('onedark').load()
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'onedark',
+    component_separators = '|',
+    section_separators = '',
+  },
+}
 
 -- Telescope
 require("telescope").setup({
@@ -307,18 +289,10 @@ cmp.setup({
         end,
     },
     mapping = {
-        ["<C-n>"] = cmp.mapping.select_next_item({
-            behavior = cmp.SelectBehavior.Insert,
-        }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({
-            behavior = cmp.SelectBehavior.Insert,
-        }),
-        ["<Down>"] = cmp.mapping.select_next_item({
-            behavior = cmp.SelectBehavior.Select,
-        }),
-        ["<Up>"] = cmp.mapping.select_prev_item({
-            behavior = cmp.SelectBehavior.Select,
-        }),
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert, }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert, }),
+        ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, }),
+        ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, }),
         ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
