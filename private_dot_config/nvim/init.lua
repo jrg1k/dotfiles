@@ -1,51 +1,51 @@
 -- install packer
 local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({
+    fn.system {
         "git",
         "clone",
         "--depth",
         "1",
         "https://github.com/wbthomason/packer.nvim",
         install_path,
-    })
-    vim.cmd("packadd packer.nvim")
+    }
+    vim.cmd "packadd packer.nvim"
 end
 
 require("packer").startup(function(use)
     -- plugin manager
-    use("wbthomason/packer.nvim")
+    use "wbthomason/packer.nvim"
 
     -- vcs
-    use("tpope/vim-fugitive")
-    use("tpope/vim-rhubarb")
+    use "tpope/vim-fugitive"
+    use "tpope/vim-rhubarb"
 
     -- handy tools
-    use("numToStr/Comment.nvim")
-    use("psf/black")
-    use("ludovicchabant/vim-gutentags")
-    use("lukas-reineke/indent-blankline.nvim")
-    use({ "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } })
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-    use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+    use "numToStr/Comment.nvim"
+    use "psf/black"
+    use "ludovicchabant/vim-gutentags"
+    use "lukas-reineke/indent-blankline.nvim"
+    use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
+    use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+    use { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } }
 
     -- eyecandy
-    use ('navarasu/onedark.nvim')
-    use("nvim-lualine/lualine.nvim")
+    use "navarasu/onedark.nvim"
+    use "nvim-lualine/lualine.nvim"
 
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use("nvim-treesitter/nvim-treesitter-textobjects")
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+    use "nvim-treesitter/nvim-treesitter-textobjects"
 
     -- native lsp
-    use("neovim/nvim-lspconfig")
-    use("hrsh7th/nvim-cmp")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-cmdline")
-    use("hrsh7th/cmp-vsnip")
-    use("hrsh7th/vim-vsnip")
+    use "neovim/nvim-lspconfig"
+    use "hrsh7th/nvim-cmp"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
+    use "hrsh7th/cmp-vsnip"
+    use "hrsh7th/vim-vsnip"
 end)
 
 -- python black
@@ -63,7 +63,7 @@ vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Gitsigns
-require("gitsigns").setup({
+require("gitsigns").setup {
     signs = {
         add = { text = "+" },
         change = { text = "~" },
@@ -71,7 +71,7 @@ require("gitsigns").setup({
         topdelete = { text = "‾" },
         changedelete = { text = "~" },
     },
-})
+}
 
 -- Comment.nvim
 require("Comment").setup()
@@ -106,21 +106,21 @@ vim.o.smartcase = true
 
 -- theme
 vim.o.background = "dark"
-require('onedark').setup {
-    style = 'darker'
+require("onedark").setup {
+    style = "darker",
 }
-require('onedark').load()
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'onedark',
-    component_separators = '|',
-    section_separators = '',
-  },
+require("onedark").load()
+require("lualine").setup {
+    options = {
+        icons_enabled = false,
+        theme = "onedark",
+        component_separators = "|",
+        section_separators = "",
+    },
 }
 
 -- Telescope
-require("telescope").setup({
+require("telescope").setup {
     defaults = {
         mappings = {
             i = {
@@ -129,8 +129,8 @@ require("telescope").setup({
             },
         },
     },
-})
-require("telescope").load_extension("fzf")
+}
+require("telescope").load_extension "fzf"
 
 vim.api.nvim_set_keymap("n", "<leader><space>", [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>sf", [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
@@ -148,7 +148,7 @@ vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { 
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", { noremap = true, silent = true })
 
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.configs").setup {
     highlight = { enable = true },
     incremental_selection = {
         enable = true,
@@ -191,10 +191,10 @@ require("nvim-treesitter.configs").setup({
             },
         },
     },
-})
+}
 
 -- LSP settings
-local lspconfig = require("lspconfig")
+local lspconfig = require "lspconfig"
 local on_attach = function(_, bufnr)
     local opts = { noremap = true, silent = true }
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -217,31 +217,31 @@ local on_attach = function(_, bufnr)
     else
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     end
-    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-lspconfig.texlab.setup({
+lspconfig.texlab.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
         texlab = {
             build = {
                 args = { "-xelatex", "-interaction=nonstopmode", "-synctex=1", "%f" },
-                onSave = true
+                onSave = true,
             },
             latexindent = { modifyLineBreaks = true },
         },
     },
-})
+}
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.sumneko_lua.setup({
+lspconfig.sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -261,46 +261,46 @@ lspconfig.sumneko_lua.setup({
             },
         },
     },
-})
+}
 
 -- Enable the following language servers
 local servers = { "clangd", "rust_analyzer", "pyright" }
 for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup({
+    lspconfig[lsp].setup {
         on_attach = on_attach,
         capabilities = capabilities,
-    })
+    }
 end
 
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
 local feedkey = function(key, mode)
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
-local cmp = require("cmp")
-cmp.setup({
+local cmp = require "cmp"
+cmp.setup {
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body)
         end,
     },
     mapping = {
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert, }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert, }),
-        ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, }),
-        ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, }),
+        ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+        ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+        ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
         ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
         ["<C-e>"] = cmp.mapping.close(),
-        ["<CR>"] = cmp.mapping.confirm({
+        ["<CR>"] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-        }),
+        },
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -327,7 +327,7 @@ cmp.setup({
         { name = "cmdline" },
         { name = "buffer" },
     },
-})
+}
 
 cmp.setup.cmdline("/", { sources = { { name = "buffer" } } })
 
