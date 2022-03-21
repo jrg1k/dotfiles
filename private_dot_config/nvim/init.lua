@@ -94,7 +94,6 @@ vim.wo.signcolumn = "yes"
 vim.o.colorcolumn = "89"
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.o.undofile = true
 vim.o.updatetime = 250
 vim.o.completeopt = "menuone,noselect"
 vim.api.nvim_set_keymap("i", "<C-c>", "<ESC>", {})
