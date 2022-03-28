@@ -31,7 +31,7 @@ require("packer").startup(function(use)
     use { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } }
 
     -- eyecandy
-    use "navarasu/onedark.nvim"
+    use "RRethy/nvim-base16"
     use "nvim-lualine/lualine.nvim"
 
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
@@ -97,6 +97,7 @@ vim.o.splitbelow = true
 vim.o.updatetime = 250
 vim.o.completeopt = "menuone,noselect"
 vim.api.nvim_set_keymap("i", "<C-c>", "<ESC>", {})
+vim.g.c_syntax_for_h = 1
 
 -- search
 vim.o.hlsearch = false
@@ -105,14 +106,11 @@ vim.o.smartcase = true
 
 -- theme
 vim.o.background = "dark"
-require("onedark").setup {
-    style = "darker",
-}
-require("onedark").load()
+vim.cmd('colorscheme base16-default-dark')
 require("lualine").setup {
     options = {
         icons_enabled = false,
-        theme = "onedark",
+        theme = "auto",
         component_separators = "|",
         section_separators = "",
     },

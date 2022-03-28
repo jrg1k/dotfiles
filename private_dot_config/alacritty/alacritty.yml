@@ -1,22 +1,20 @@
-colors:
-  primary:
-    background: '#1f2329'
-    foreground: '#a0a8b7'
-  cursor:
-    text:       CellBackground
-    cursor:     '#48b0bd' # syntax-cursor-color
-  selection:
-    text:       CellForeground
-    background: '#30363f' # syntax-selection-color
-  normal:
-    black:      '#0e1013' # mono-3
-    red:        '#e55561' # red 1
-    green:      '#8ebd6b'
-    yellow:     '#e2b86b' # orange 2
-    blue:       '#4fa6ed'
-    magenta:    '#bf68d9'
-    cyan:       '#48b0bd'
-    white:      '#828997' # mono-2
+env:
+  TERM: alacritty
+
+window:
+  dimensions:
+    columns: 0
+    lines: 0
+  padding:
+    x: 0
+    y: 0
+  dynamic_padding: false
+  decorations: none
+  opacity: 1.0
+  startup_mode: Windowed
+  title: Alacritty
+  dynamic_title: true
+  gtk_theme_variant: dark
 
 font:
   normal:
@@ -33,5 +31,66 @@ font:
     style: Bold Italic
   size: 11
 
+font:
+  normal:
+    family: JetBrains Mono
+    style: Regular
+  bold:
+    family: JetBrains Mono
+    style: Bold
+  italic:
+    family: JetBrains Mono
+    style: Italic
+  bold_italic:
+    family: JetBrains Mono
+    style: Bold Italic
+  size: 11.0
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+  builtin_box_drawing: true
+
+draw_bold_text_with_bright_colors: false
+
+# Base16 Default Dark - alacritty color config
+# Chris Kempson (http://chriskempson.com)
+colors:
+  # Default colors
+  primary:
+    background: '0x181818'
+    foreground: '0xd8d8d8'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x181818'
+    cursor: '0xd8d8d8'
+
+  # Normal colors
+  normal:
+    black:   '0x181818'
+    red:     '0xab4642'
+    green:   '0xa1b56c'
+    yellow:  '0xf7ca88'
+    blue:    '0x7cafc2'
+    magenta: '0xba8baf'
+    cyan:    '0x86c1b9'
+    white:   '0xd8d8d8'
+
+  # Bright colors
+  bright:
+    black:   '0x585858'
+    red:     '0xdc9656'
+    green:   '0x282828'
+    yellow:  '0x383838'
+    blue:    '0xb8b8b8'
+    magenta: '0xe8e8e8'
+    cyan:    '0xa16946'
+    white:   '0xf8f8f8'
+
+
 key_bindings:
   - { key: N,   mods: Control, action: SpawnNewInstance }
+  - { key: F11,                action: ToggleFullscreen }
