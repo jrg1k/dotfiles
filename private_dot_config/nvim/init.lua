@@ -23,7 +23,6 @@ require("packer").startup(function(use)
 
     -- handy tools
     use "numToStr/Comment.nvim"
-    use "psf/black"
     use "ludovicchabant/vim-gutentags"
     use "lukas-reineke/indent-blankline.nvim"
     use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
@@ -47,9 +46,6 @@ require("packer").startup(function(use)
     use "hrsh7th/cmp-vsnip"
     use "hrsh7th/vim-vsnip"
 end)
-
--- python black
-vim.g.black_linelength = 88
 
 -- set leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
@@ -106,7 +102,7 @@ vim.o.smartcase = true
 
 -- theme
 vim.o.background = "dark"
-vim.cmd('colorscheme base16-default-dark')
+vim.cmd "colorscheme base16-default-dark"
 require("lualine").setup {
     options = {
         icons_enabled = false,
@@ -209,11 +205,7 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
-    if vim.api.nvim_buf_get_option(bufnr, "filetype") == "python" then
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>Black<CR>", opts)
-    else
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    end
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
