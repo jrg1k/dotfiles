@@ -263,10 +263,9 @@ exec_always {
     gsettings set $gnome-schema font-name 'Fira Sans 12'
 }
 
-exec xsettingsd
+#exec xsettingsd
 exec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-exec "eval $(gnome-keyring-daemon --start)"
-exec "export SSH_AUTH_SOCK"
+xwayland disable
 
 #
 # Status Bar:
@@ -275,7 +274,5 @@ exec "export SSH_AUTH_SOCK"
 bar {
     swaybar_command waybar
 }
-
-xwayland disable
 
 include /etc/sway/config.d/*
