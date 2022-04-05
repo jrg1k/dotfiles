@@ -6,5 +6,6 @@ function sway-run
   set -gx ELM_ENGINE wayland_egl
   set -gx SDL_VIDEODRIVER wayland
   set -gx XDG_CURRENT_DESKTOP sway
-  sway
+  set -gx WLR_NO_HARDWARE_CURSORS 1
+  sway --unsupported-gpu
 end
