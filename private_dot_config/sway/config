@@ -276,4 +276,6 @@ bar {
     swaybar_command waybar
 }
 
+xwayland disable
+
 include /etc/sway/config.d/*
