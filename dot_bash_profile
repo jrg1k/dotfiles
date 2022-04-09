@@ -1,8 +1,8 @@
 # .bash_profile
 
-eval $(gnome-keyring-daemon --start)
-export SSH_AUTH_SOCK
-export PATH="${PATH}:${HOME}/.cargo/bin"
-
 # Get the aliases and functions
-[ -f $HOME/.bashrc ] && . $HOME/.bashrc
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
