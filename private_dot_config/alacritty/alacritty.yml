@@ -75,6 +75,8 @@ colors:
     cyan:    '0xa16946'
     white:   '0xf8f8f8'
 
+shell:
+  program: /bin/fish
 
 key_bindings:
   - { key: N,   mods: Control, action: SpawnNewInstance }
