@@ -1,0 +1,5 @@
+[user]
+	name = Jørgen Kristensen
+	email = jk@bitnor.org
+[pull]
+	rebase = true
