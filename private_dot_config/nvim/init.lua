@@ -30,7 +30,7 @@ require("packer").startup(function(use)
     use { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } }
 
     -- eyecandy
-    use 'navarasu/onedark.nvim'
+    use "navarasu/onedark.nvim"
     use "nvim-lualine/lualine.nvim"
 
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
@@ -100,10 +100,10 @@ vim.o.smartcase = true
 
 -- theme
 vim.o.background = "dark"
-require('onedark').setup {
-    style = 'darker'
+require("onedark").setup {
+    style = "darker",
 }
-require('onedark').load()
+require("onedark").load()
 
 require("lualine").setup {
     options = {
@@ -183,7 +183,6 @@ cmp.setup {
                 fallback()
             end
         end, { "i", "s" }),
-
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -256,7 +255,7 @@ lspconfig.texlab.setup {
     settings = {
         texlab = {
             build = {
-                args = { "-xelatex", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                args = { "-pdfxe", "-interaction=nonstopmode", "-synctex=1", "%f" },
                 onSave = true,
             },
             latexindent = { modifyLineBreaks = true },
