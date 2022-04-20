@@ -260,7 +260,7 @@ lspconfig.texlab.setup {
     settings = {
         texlab = {
             build = {
-                args = { "-pdfxe", "-f", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                args = { "-pdfxe", "-interaction=nonstopmode", "-synctex=1", "%f" },
                 onSave = true,
             },
             latexindent = { modifyLineBreaks = true },
@@ -299,7 +299,7 @@ require("clangd_extensions").setup {
     server = {
         on_attach = on_attach,
         capabilities = capabilities,
-    }
+    },
 }
 
 -- Enable the following language servers
