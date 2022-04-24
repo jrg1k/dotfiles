@@ -153,7 +153,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
 require("nvim-treesitter.configs").setup {
-    ensure_installed = { "c", "lua", "rust" },
+    ensure_installed = { "c", "lua", "rust", "json" },
     highlight = { enable = true },
 }
 
