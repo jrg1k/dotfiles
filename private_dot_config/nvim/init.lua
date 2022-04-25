@@ -45,9 +45,6 @@ require("packer").startup(function(use)
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
 
-    -- language extensions
-    use "p00f/clangd_extensions.nvim"
-
     if packer_bootstrap then
         require("packer").sync()
     end
@@ -294,16 +291,8 @@ lspconfig.sumneko_lua.setup {
     },
 }
 
--- language extensions
-require("clangd_extensions").setup {
-    server = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    },
-}
-
 -- Enable the following language servers
-local servers = { "rust_analyzer", "pyright" }
+local servers = { "clangd", "rust_analyzer", "pyright" }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
