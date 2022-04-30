@@ -69,9 +69,6 @@ colors:
     cyan:    '0x56b6c2'
     white:   '0xffffff'
 
-shell:
-  program: /bin/fish
-
 key_bindings:
   - { key: N,   mods: Control, action: SpawnNewInstance }
   - { key: F11,                action: ToggleFullscreen }
