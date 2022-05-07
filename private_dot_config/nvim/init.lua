@@ -58,11 +58,11 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
---Map blankline
-vim.g.indent_blankline_char = "┊"
-vim.g.indent_blankline_filetype_exclude = { "help", "packer" }
-vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
-vim.g.indent_blankline_show_trailing_blankline_indent = false
+-- Indent blankline
+require('indent_blankline').setup {
+  char = '┊',
+  show_trailing_blankline_indent = false,
+}
 
 -- Gitsigns
 require("gitsigns").setup {
@@ -80,8 +80,8 @@ require("Comment").setup()
 
 vim.wo.number = true
 vim.o.mouse = "a"
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.breakindent = true
@@ -89,7 +89,7 @@ vim.wo.linebreak = true
 vim.opt.clipboard = { "unnamedplus" }
 vim.o.ff = "unix"
 vim.wo.signcolumn = "yes"
-vim.o.colorcolumn = "89"
+vim.o.colorcolumn = "91"
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.updatetime = 250
