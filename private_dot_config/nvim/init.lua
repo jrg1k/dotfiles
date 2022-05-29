@@ -260,7 +260,7 @@ lspconfig.texlab.setup {
   settings = {
     texlab = {
       build = {
-        args = { "-pdfxe", "-interaction=nonstopmode", "-synctex=1", "%f" },
+        args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
         onSave = true,
       },
       latexindent = { modifyLineBreaks = true },
