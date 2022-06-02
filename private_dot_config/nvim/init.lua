@@ -59,8 +59,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Indent blankline
-require('indent_blankline').setup {
-  char = '┊',
+require("indent_blankline").setup {
+  char = "┊",
   show_trailing_blankline_indent = false,
 }
 
@@ -294,6 +294,21 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        features = { "exercises" },
+      },
+      checkOnSave = {
+        command = "clippy",
+      },
+    },
+  },
+}
+
 require("clangd_extensions").setup {
   server = {
     on_attach = on_attach,
@@ -305,7 +320,7 @@ require("clangd_extensions").setup {
 }
 
 -- Enable the following language servers
-local servers = { "rust_analyzer", "pyright" }
+local servers = { "pyright" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
