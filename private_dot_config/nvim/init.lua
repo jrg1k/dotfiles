@@ -299,9 +299,6 @@ lspconfig.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
     ["rust-analyzer"] = {
-      cargo = {
-        features = { "exercises" },
-      },
       checkOnSave = {
         command = "clippy",
       },
